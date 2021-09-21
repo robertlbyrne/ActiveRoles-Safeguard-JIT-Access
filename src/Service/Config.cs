@@ -51,6 +51,76 @@ namespace OneIdentity.ARSGJitAccess.Service
             }
         }
 
+        public static string PoshActive
+        {
+            get
+            {
+                return EmptyAsNull("PoshActive");
+            }
+            private set
+            {
+                UpdateAppSetting("PoshActive", value);
+            }
+        }
+
+        public static string PoshScript
+        {
+            get
+            {
+                return EmptyAsNull("PoshScript");
+            }
+            private set
+            {
+                UpdateAppSetting("PoshScript", value);
+            }
+        }
+
+        public static string PoshWorkingDir
+        {
+            get
+            {
+                return EmptyAsNull("PoshWorkingDir");
+            }
+            private set
+            {
+                UpdateAppSetting("PoshWorkingDir", value);
+            }
+        }
+
+        public static string ARSActive
+        {
+            get
+            {
+                return EmptyAsNull("ARSActive");
+            }
+            private set
+            {
+                UpdateAppSetting("ARSActive", value);
+            }
+        }
+
+        public static string PoshADSAttribute
+        {
+            get
+            {
+                return EmptyAsNull("PoshADSAttribute");
+            }
+            private set
+            {
+                UpdateAppSetting("PoshADSAttribute", value);
+            }
+        }
+        public static string LogLevel
+        {
+            get
+            {
+                return EmptyAsNull("LogLevel");
+            }
+            private set
+            {
+                UpdateAppSetting("LogLevel", value);
+            }
+        }
         public static string SafeguardAppliance
         {
             get

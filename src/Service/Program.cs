@@ -20,10 +20,26 @@ namespace OneIdentity.ARSGJitAccess.Service
 
             try
             {
-                Log.Logger = new LoggerConfiguration()
+                Console.WriteLine("Starting..." + Config.LogLevel);
+                // TODO Is this approach of setting loglevel good TopShelf practice?
+                if (String.IsNullOrEmpty(Config.LogLevel) ||
+                        Config.LogLevel.Equals("Information", StringComparison.InvariantCultureIgnoreCase))
+                {
+
+                    Log.Logger = new LoggerConfiguration()
+                        .WriteTo.Console()
+                        .WriteTo.EventLog(AppName, manageEventSource: true)
+                        .MinimumLevel.Information()
+                        .CreateLogger();
+                }
+                else // anything not empty or Information...go debug
+                {
+                    Log.Logger = new LoggerConfiguration()
                     .WriteTo.Console()
                     .WriteTo.EventLog(AppName, manageEventSource: true)
+                    .MinimumLevel.Debug()
                     .CreateLogger();
+                }
             }
             catch(SecurityException)
             {

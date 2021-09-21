@@ -23,6 +23,12 @@ namespace OneIdentity.ARSGJitAccess.Common
             return JsonConvert.DeserializeObject<SafeguardAssetAccount>(response);
         }
 
+        // To lookup SGUSer names, say from an event payload.  Added for the Posh caller.
+        public SafeguardUser GetSGUser(string userId)
+        {
+            var response = Connection.InvokeMethod(Service.Core, Method.Get, ($"Users/{userId}"));
+            return JsonConvert.DeserializeObject<SafeguardUser>(response);
+        }
         public SafeguardUser GetCurrentUser()
         {
             var response = InvokeMethod(Service.Core, Method.Get, "Me");
